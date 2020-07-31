@@ -1,0 +1,41 @@
+
+.list-group-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+/*.form-group button{
+    width:40%;
+}
+#form-btns{
+    display:flex;
+}*/
+#cancel-new-book{
+    width:20%;
+    align-self:flex-end;
+    position:absolute;
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    padding:1em 0;
+}
+
+#new-book-form{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width:80vw;
+    padding:1.5em;
+    margin:auto;
+    position:absolute;
+    top:10%;
+    left:10%;
+    right:10%;
+    background:#f4f4f4;
+    z-index:10;
+    box-shadow:1px 1px 60px 1px black;
+}
+#new-book-form > *{
+    margin:.4em 0;
+}
