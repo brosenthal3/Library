@@ -28,17 +28,25 @@ function toggleReadBook(id){
 function renderPage(){
     showPopup(false);
     let list = document.getElementById('books');
-    list.innerHTML = '';
-    library.forEach((book, index) => {
-        list.innerHTML += `
-            <li class="list-group-item">${book.info()} 
-                <div>
-                    <button class="toggle-read-btn btn ${book.read ? 'btn-info' : 'btn-warning'}" id="${index}">${book.read ? 'Have read' : 'Not read'}</button>
-                    <button class="remove-book-btn btn btn-danger" id="${index}">Remove Book</button>
+    if(library.length == 0){
+        list.innerHTML = `<h5 class="alert alert-light"><i>There are currently no books in the library.</i></h5>`;
+    } else{
+        list.innerHTML = '';
+        library.forEach((book, index) => {
+            list.innerHTML += `
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${book.title}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">By ${book.author}</h6>
+                        <p class="card-text">${book.pages} pages.</p>
+                        <button class="toggle-read-btn btn ${book.read ? 'btn-primary' : 'btn-warning'}" id="${index}">${book.read ? 'Have read' : 'Haven\'t read'}</button>
+                        <button class="remove-book-btn btn btn-danger" id="${index}">Remove Book</button>
+                    </div>
                 </div>
-            </li>
-        `
-    });
+            `
+        });
+    }
+    
     addButtonEvents();
 }
 
@@ -53,6 +61,9 @@ document.getElementById('submit-new-book').addEventListener('click', () => {
     let author = document.getElementById('book-author').value;
     let pages = document.getElementById('book-pages').value;
     let read = document.getElementById('book-read').checked;
+    if(title == '' || author == '' || pages == null){
+        return;
+    }
     document.getElementById('book-pages').value = null;
     document.getElementById('book-author').value = '';
     document.getElementById('book-title').value = '';

@@ -9,18 +9,16 @@
 </head>
 <body>
     <div class="container">
-        <header class="mt-3">
+        <header class="mt-2">
             <h2>My Library</h2>
-            <button class="btn btn-success" id="add-new-book">Add Book</button>
+            <button class="btn" id="add-new-book">Add Book</button>
         </header>
-        <hr>
+
+        <p class="mb-3">The best and easiest way to store your books online.</p>
         <main class="mt-3">
             <section id="books-container">
-                <ul id="books" class="list-group">
-                    <!--<li class="list-group-item">The Hobbit<button class="remove-book-btn btn btn-danger">Remove Book</button></li>
-                    <li class="list-group-item">Harry Potter 1<button class="remove-book-btn btn btn-danger">Remove Book</button></li>
-                    <li class="list-group-item">Harry Potter 3<button class="remove-book-btn btn btn-danger">Remove Book</button></li>-->
-                </ul>
+                <div id="books">
+                </div>
             </section>
         </main>
     </div>
@@ -28,7 +26,7 @@
     
         <div id="new-book-form" class="form-group container">
 
-            <button id="cancel-new-book" class="form-control">Cancel</button>
+            <button id="cancel-new-book" class="form-control btn">Cancel</button>
             <h3>Add a new book:</h3>
             <input type="text" placeholder="Title" id="book-title" class="form-control">
             <input type="text" placeholder="Author" id="book-author" class="form-control">
@@ -38,7 +36,7 @@
                 <label for="book-read" class="form-check-label">I have read this book.</label>
             </div>
             <div id="form-btns">
-                <button id="submit-new-book" class="form-control">Submit</button>
+                <button id="submit-new-book" class="form-control btn">Submit</button>
             </div>
         </div>
  
