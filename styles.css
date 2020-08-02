@@ -40,6 +40,7 @@ header{
     justify-content:space-between;
     padding:1em 0;
     padding-bottom:0;
+    align-items:center;
 }
 
 #new-book-form{
@@ -72,4 +73,18 @@ header{
 }
 /*.card:hover{
     box-shadow:1px 1px 6px 2px rgba(0, 0, 0, 0.2);
-}/*
+}*/
+@media(max-width:600px){
+    .card{
+        width:48%;
+    }
+}
+
+@media(max-width:500px){
+    .card{
+        width:100%;
+    }
+    header{
+        margin-bottom:1em;
+    }
+}
