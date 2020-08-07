@@ -1,31 +1,41 @@
-//library array of all the books
-let library = [];
 
-//book constructor
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
-Book.prototype.info = function(){
-    return `${this.title}, written by ${this.author}, ${this.pages} pages.`
+//book class
+Book = class{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info(){
+        return `${this.title}, written by ${this.author}, ${this.pages} pages.`
+    }
+    
 }
 
-function addBook(title, author, pages, read){
-    let newBook = new Book(title, author, pages, read);
-    library.push(newBook);
+//library class
+Library = class{
+    constructor(){
+        this.libraryArray = [];
+    }
+    addBook(title, author, pages, read){
+        let newBook = new Book(title, author, pages, read);
+        this.libraryArray.push(newBook);
+    }
+    removeBook(id){
+        this.libraryArray.splice(id, 1);
+        renderPage();
+    }
+    toggleReadBook(id){
+        this.libraryArray[id].read = this.libraryArray[id].read ? false : true;
+        renderPage();
+    }
 }
-function removeBook(id){
-    library.splice(id, 1);
-    renderPage();
-}
-function toggleReadBook(id){
-    library[id].read = library[id].read ? false : true;
-    renderPage();
-}
+
+const appLibrary = new Library();
 
 function renderPage(){
+    const library = appLibrary.libraryArray;
     showPopup(false);
     let list = document.getElementById('books');
     if(library.length == 0){
@@ -68,19 +78,19 @@ document.getElementById('submit-new-book').addEventListener('click', () => {
     document.getElementById('book-author').value = '';
     document.getElementById('book-title').value = '';
     document.getElementById('book-read').checked = false;
-    addBook(title, author, pages, read);
+    appLibrary.addBook(title, author, pages, read);
     renderPage();
 });
 
 function addButtonEvents(){
     document.querySelectorAll(".remove-book-btn").forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            removeBook(e.target.id);
+            appLibrary.removeBook(e.target.id);
         });
     });
     document.querySelectorAll(".toggle-read-btn").forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            toggleReadBook(e.target.id);
+            appLibrary.toggleReadBook(e.target.id);
         });
     });
 }
